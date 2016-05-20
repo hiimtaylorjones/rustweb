@@ -10,16 +10,13 @@ use std::io::Read;
 
 
 fn main() {
+    println!("{:?}", get_content("http://jsonplaceholder.typicode.com/posts"));
+}
+
+fn get_content(url: &str) -> hyper::Result<String> {
     let client = Client::new();
-    let url = "http://jsonplaceholder.typicode.com/posts";
-    let mut response = match client.get(url).send() {
-        Ok(response) => response,
-        Err(_) => panic!("Whoops."),
-    };
-    let mut buf = String::new();
-    match response.read_to_string(&mut buf) {
-        Ok(_) => (),
-        Err(_) => panic!("I give up."),
-    };
-    println!("buf: {}", buf)
+    let mut response = try!(client.get(url).send());
+    let mut buffer = String::new();
+    try!(response.read_to_string(&mut buffer));
+    Ok(buffer)
 }
