@@ -12,6 +12,7 @@ pub struct User {
 }
 
 use super::schema::posts;
+use super::schema::users;
 
 #[insertable_into(posts)]
 pub struct NewPost<'a> {
@@ -20,7 +21,7 @@ pub struct NewPost<'a> {
     pub user_id: i32,
 }
 
-//#[insertable_into(users)]
+#[insertable_into(users)]
 pub struct NewUser<'a> {
     pub name: &'a str,
 }
