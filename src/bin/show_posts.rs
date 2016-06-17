@@ -14,7 +14,7 @@ fn main() {
         .load::<Post>(&connection)
         .expect("Error loading posts");
 
-    println!("Displaying {} posts", results.len());
+    println!("Displaying the {} most recent posts", results.len());
     for post in results {
         println!("==========================================================");
         println!("Title: {}", post.title);

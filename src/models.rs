@@ -20,7 +20,7 @@ pub struct NewPost<'a> {
     pub user_id: i32,
 }
 
-#[insertable_into(users)]
-pub struct User {
+//#[insertable_into(users)]
+pub struct NewUser<'a> {
     pub name: &'a str,
 }
