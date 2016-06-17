@@ -9,13 +9,9 @@ use self::diesel::prelude::*;
 
 use hyper::{Client};
 use std::io::Read;
-
-// Serializer stuffs
-// use rustc_serialize::Decodable;
-// use rustc_serialize::Encodable;
 use rustc_serialize::json;
 
-// Automatically generates traits to the struxct
+// Automatically generates traits to the struct
 #[derive(RustcDecodable, RustcEncodable)]
 pub struct TestPost {
     userId: i32,

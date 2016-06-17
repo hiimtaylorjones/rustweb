@@ -5,6 +5,11 @@ pub struct Post {
     pub title: String,
     pub body: String,
 }
+#[derive(Queryable)]
+pub struct User {
+    pub id: i32,
+    pub name: String,
+}
 
 use super::schema::posts;
 
@@ -13,4 +18,9 @@ pub struct NewPost<'a> {
     pub title: &'a str,
     pub body: &'a str,
     pub user_id: i32,
+}
+
+#[insertable_into(users)]
+pub struct User {
+    pub name: &'a str,
 }
